@@ -2,6 +2,14 @@ import React, { Component } from "react";
 import "./tour.scss";
 
 class Tour extends Component {
+  state = {
+    showInfo: false,
+  };
+
+  handleInfo = () => {
+    this.setState({ showInfo: !this.state.showInfo });
+  };
+
   render() {
     const { id, city, img, name, info } = this.props.tour;
     const { removeTour } = this.props;
@@ -9,8 +17,8 @@ class Tour extends Component {
     return (
       <article className="tour">
         <div className="img-container">
-          <img src={img} alt="image" />
-          <span className="close-btn">
+          <img src={img} alt="city tour" />
+          <span className="close-btn" onClick={() => removeTour(id)}>
             <i className="fas fa-window-close" />
           </span>
         </div>
@@ -19,11 +27,11 @@ class Tour extends Component {
           <h4>{name}</h4>
           <h5>
             info{" "}
-            <span className="close-btn">
+            <span onClick={this.handleInfo}>
               <i className="fas fa-caret-square-down"></i>
             </span>
           </h5>
-          <p>{info}</p>
+          {this.state.showInfo && <p>{info}</p>}
         </div>
       </article>
     );

@@ -10,7 +10,8 @@ class TourList extends Component {
   };
 
   removeTour = (id) => {
-    console.log(id);
+    const sortedTours = this.state.tours.filter((tour) => tour.id !== id);
+    this.setState({ tours: sortedTours });
   };
 
   render() {
