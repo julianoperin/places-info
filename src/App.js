@@ -1,11 +1,14 @@
 import React from "react";
 import "./App.scss";
+import Navbar from "./components/Navbar.js/Navbar";
+import TourList from "./components/TourList/index";
 
 function App() {
   return (
-    <div>
-      <h1>App</h1>
-    </div>
+    <React.Fragment>
+      <Navbar />
+      <TourList />
+    </React.Fragment>
   );
 }
 
